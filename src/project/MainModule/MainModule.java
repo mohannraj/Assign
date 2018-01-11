@@ -1,7 +1,7 @@
 package project.MainModule;
 
+
 import java.io.FileInputStream;
-import java.io.FileOutputStream;
 import java.util.concurrent.TimeUnit;
 
 import org.apache.poi.ss.usermodel.Sheet;
@@ -13,31 +13,33 @@ import org.openqa.selenium.WebElement;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.testng.Reporter;
 import org.testng.annotations.AfterTest;
+import org.testng.annotations.BeforeTest;
 import org.testng.annotations.Test;
-import org.testng.asserts.SoftAssert;
 
 import project.libraries.Generic;
 
 public class MainModule {
 	WebDriver driver; 
-	
-	@Test
+	String xlPath="./Exceldata/search.xlsx";
+	String sheetName="Sheet1";
+	    
+	@BeforeTest
 	public void preTest() throws Exception
 	{
-	    String xlPath="./Exceldata/search.xlsx";
-	    String sheetName="Sheet1";
-		
 	    System.setProperty("webdriver.chrome.driver","./driver/chromedriver.exe");	
 		driver = new ChromeDriver();
 		driver.get("file:///c:/Users/MohanRaj/Desktop/search.html");
 		driver.manage().timeouts().implicitlyWait(10, TimeUnit.SECONDS);
-		
+	}
+	
+	@Test
+	public void ReadandWrite() throws Exception
+	{
 		Workbook wb = WorkbookFactory.create(new FileInputStream(xlPath));
 		Sheet s = wb.getSheet(sheetName);
-		int rc = s.getLastRowNum();
 		
-		int count = Generic.getExcelRowCount(xlPath, sheetName);
-		for(int i=2; i<=count;i++)
+		int rc1 = Generic.getExcelRowCount(xlPath, sheetName);
+		for(int i=2; i<=rc1;i++)
 		 {
      		String data = Generic.getExcelCellValue(xlPath, sheetName, i, 14);
 			System.out.println(data);
@@ -82,25 +84,21 @@ public class MainModule {
             driver.findElement(By.id("abc")).click();
             
             String text = driver.findElement(By.id("abcd")).getText();
-            int intval=Integer.parseInt(text);
-            System.out.println(intval);
-            s.getRow(i).getCell(26).setCellValue(intval);
-            FileOutputStream fileOut = new FileOutputStream(xlPath);
-            wb.write(fileOut);
-            fileOut.close();
-          // break;
+            int intVal=Integer.parseInt(text);
+            System.out.println(intVal);
+            
+            int cellNo=26;
+            Generic.writecelldata(xlPath, sheetName, i, cellNo, intVal);
+
+           break;
 		}
 	 }	
 	
 	@Test(priority=1)
-	public void ValidateResults() throws Exception
+	public void ValidationResults() throws Exception
 	 {
-		String xlPath="./Exceldata/search.xlsx";
-		String sheetName = "Sheet1";
-		SoftAssert sa = new SoftAssert();
-		
-		int rC =12;
-		for(int i=2;i<rC;i++)
+		int rc2 = Generic.getExcelRowCount(xlPath, sheetName);
+		for(int i=2;i<rc2;i++)
 		 {
 		  try 
 		   {
@@ -110,11 +108,11 @@ public class MainModule {
 			 int eval=Integer.parseInt(s2);	 
 		     if(aval==eval)
 		      {
-		        Reporter.log(aval+" ="+eval+"  --> Pass",true);
+		        Reporter.log("Accepted Value:"+aval+" is equal to "+"Expected Value:"+eval+" --> Pass",true);
 		      }
 		     else
 		      {
-		     	Reporter.log(aval+"="+eval+"  --> Fail",true);
+		     	Reporter.log("Accepted Value:"+aval+" is not equal to "+"Expected Value:"+eval+" --> Fail",true);
 		      }
 		   }
 		  catch(Exception e) 

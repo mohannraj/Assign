@@ -2,17 +2,11 @@ package project.libraries;
 
 import java.io.FileInputStream;
 import java.io.FileOutputStream;
-
-import org.apache.poi.EncryptedDocumentException;
-import org.apache.poi.ss.usermodel.Cell;
-import org.apache.poi.ss.usermodel.Row;
 import org.apache.poi.ss.usermodel.Sheet;
 import org.apache.poi.ss.usermodel.Workbook;
 import org.apache.poi.ss.usermodel.WorkbookFactory;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.ui.Select;
-
-import com.sun.media.sound.InvalidFormatException;
 
 public class Generic {
 	public static int getExcelRowCount(String xlPath, String sheetName)
@@ -71,30 +65,31 @@ public class Generic {
   
    }
 
-  public static void select(WebElement e1,String text)
-   {
+  public static void select(WebElement element1,String text)
+  {
 	try
 	 {
-		 Select select11 = new Select(e1);
+		 Select select11 = new Select(element1);
 		 select11.selectByVisibleText(text);
 	 }
 	catch(Exception e) { }
    }
 
-  public static void writecelldata(String xlpath,String sheetname,int cell,String data) throws Exception
-   {
-     Workbook wb = WorkbookFactory.create(new FileInputStream(xlpath));
-     Sheet s = wb.getSheet(sheetname);
-     int rc = s.getLastRowNum();
-     System.out.println(rc);
-     for(int i=2;i<=rc;i++)
-      {
-       s.getRow(i).getCell(cell).setCellValue(data);
-      }
+public static void writecelldata(String xlPath, String sheetName, int row, int cellNo, int intVal) throws Exception 
+    {
+    Workbook wb = WorkbookFactory.create(new FileInputStream(xlPath));
+    Sheet s = wb.getSheet(sheetName);
+    int rc = s.getLastRowNum();
+    System.out.println(rc);
+    for(int i=row;i<=rc;i++)
+     {
+      s.getRow(i).getCell(cellNo).setCellValue(intVal);
+     }
 
-     FileOutputStream fileOut = new FileOutputStream(xlpath);
-     wb.write(fileOut);
-     fileOut.close();
-   }
+    FileOutputStream fileOut = new FileOutputStream(xlPath);
+    wb.write(fileOut);
+    fileOut.close();
+	
+    }
 }
  
