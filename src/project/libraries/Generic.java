@@ -55,40 +55,42 @@ public class Generic {
 		  Workbook wb = WorkbookFactory.create(fis);
 		  Sheet s = wb.getSheet(sheetName);
 		  int cellValue = (int) s.getRow(rowNum).getCell(colNum).getNumericCellValue();
-		   s1=String.valueOf(cellValue); 
+		  s1=String.valueOf(cellValue); 
 	   }
 	  catch(Exception e)
       {
     	   s1="";
       }
-	    return s1;
-  
+	return s1;
    }
 
+  
   public static void select(WebElement element1,String text)
-  {
-	try
-	 {
+   {
+	 try
+	  {
 		 Select select11 = new Select(element1);
 		 select11.selectByVisibleText(text);
-	 }
-	catch(Exception e) { }
+	  }
+	 catch(Exception e) { }
    }
 
-public static void writecelldata(String xlPath, String sheetName, int row, int cellNo, int intVal) throws Exception 
+  
+   public static void writecelldata(String xlPath, String sheetName, int row, int cellNo, int intVal) throws Exception 
     {
-    Workbook wb = WorkbookFactory.create(new FileInputStream(xlPath));
-    Sheet s = wb.getSheet(sheetName);
-    int rc = s.getLastRowNum();
-    System.out.println(rc);
-    for(int i=row;i<=rc;i++)
-     {
-      s.getRow(i).getCell(cellNo).setCellValue(intVal);
-     }
+      Workbook wb = WorkbookFactory.create(new FileInputStream(xlPath));
+      Sheet s = wb.getSheet(sheetName);
+      int rc = s.getLastRowNum();
+      System.out.println(rc);
+      
+      for(int i=row;i<=rc;i++)
+       {
+         s.getRow(i).getCell(cellNo).setCellValue(intVal);
+       }
 
-    FileOutputStream fileOut = new FileOutputStream(xlPath);
-    wb.write(fileOut);
-    fileOut.close();
+      FileOutputStream fileOut = new FileOutputStream(xlPath);
+      wb.write(fileOut);
+      fileOut.close();
 	
     }
 }
