@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<testng-results skipped="0" failed="0" ignored="0" total="2" passed="2">
+<testng-results skipped="0" failed="0" total="2" passed="2">
   <reporter-output>
     <line>
       <![CDATA[Accepted Value:3734 is equal to Expected Value:3734 --> Pass]]>
@@ -29,20 +29,20 @@
       <![CDATA[Accepted Value:3734 is not equal to Expected Value:684 --> Fail]]>
     </line>
   </reporter-output>
-  <suite name="Suite" duration-ms="127142" started-at="2018-01-18T08:09:11Z" finished-at="2018-01-18T08:11:18Z">
+  <suite name="Suite" duration-ms="143193" started-at="2018-01-29T17:27:26Z" finished-at="2018-01-29T17:29:49Z">
     <groups>
     </groups>
-    <test name="Test" duration-ms="127142" started-at="2018-01-18T08:09:11Z" finished-at="2018-01-18T08:11:18Z">
+    <test name="Test" duration-ms="143193" started-at="2018-01-29T17:27:26Z" finished-at="2018-01-29T17:29:49Z">
       <class name="project.MainModule.MainModule">
-        <test-method status="PASS" signature="preTest()[pri:0, instance:project.MainModule.MainModule@34cd072c]" name="preTest" is-config="true" duration-ms="4102" started-at="2018-01-18T13:39:11Z" finished-at="2018-01-18T13:39:15Z">
+        <test-method status="PASS" signature="preTest()[pri:0, instance:project.MainModule.MainModule@548a9f61]" name="preTest" is-config="true" duration-ms="11227" started-at="2018-01-29T22:57:26Z" finished-at="2018-01-29T22:57:37Z">
           <reporter-output>
           </reporter-output>
         </test-method> <!-- preTest -->
-        <test-method status="PASS" signature="ReadandWrite()[pri:0, instance:project.MainModule.MainModule@34cd072c]" name="ReadandWrite" duration-ms="122576" started-at="2018-01-18T13:39:15Z" finished-at="2018-01-18T13:41:18Z">
+        <test-method status="PASS" signature="ReadandWrite()[pri:0, instance:project.MainModule.MainModule@548a9f61]" name="ReadandWrite" duration-ms="131702" started-at="2018-01-29T22:57:37Z" finished-at="2018-01-29T22:59:49Z">
           <reporter-output>
           </reporter-output>
         </test-method> <!-- ReadandWrite -->
-        <test-method status="PASS" signature="ValidationResults()[pri:1, instance:project.MainModule.MainModule@34cd072c]" name="ValidationResults" duration-ms="272" started-at="2018-01-18T13:41:18Z" finished-at="2018-01-18T13:41:18Z">
+        <test-method status="PASS" signature="ValidationResults()[pri:1, instance:project.MainModule.MainModule@548a9f61]" name="ValidationResults" duration-ms="198" started-at="2018-01-29T22:59:49Z" finished-at="2018-01-29T22:59:49Z">
           <reporter-output>
             <line>
               <![CDATA[Accepted Value:3734 is equal to Expected Value:3734 --> Pass]]>
@@ -73,7 +73,7 @@
             </line>
           </reporter-output>
         </test-method> <!-- ValidationResults -->
-        <test-method status="PASS" signature="postTest()[pri:0, instance:project.MainModule.MainModule@34cd072c]" name="postTest" is-config="true" duration-ms="169" started-at="2018-01-18T13:41:18Z" finished-at="2018-01-18T13:41:18Z">
+        <test-method status="PASS" signature="postTest()[pri:0, instance:project.MainModule.MainModule@548a9f61]" name="postTest" is-config="true" duration-ms="50" started-at="2018-01-29T22:59:49Z" finished-at="2018-01-29T22:59:49Z">
           <reporter-output>
           </reporter-output>
         </test-method> <!-- postTest -->
