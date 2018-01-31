@@ -17,7 +17,7 @@ public class Generic {
 		    FileInputStream fis = new FileInputStream(xlPath);
 		    Workbook wb = WorkbookFactory.create(fis);
 		    Sheet s = wb.getSheet(sheetName);
-		    //row_Count=s.getLastRowNum();
+		    row_Count=s.getLastRowNum();
 		 }
 		catch(Exception e)
          {
