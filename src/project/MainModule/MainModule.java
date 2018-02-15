@@ -28,7 +28,7 @@ public class MainModule {
 	{
 	    System.setProperty("webdriver.chrome.driver","./driver/chromedriver.exe");	
 		driver = new ChromeDriver();
-		driver.get("file:///c:/Users/MohanRaj/Desktop/search.html");
+		driver.get("file:///c:/Users/MohanRaj/Desktop/html/search.html");
 		driver.manage().timeouts().implicitlyWait(10, TimeUnit.SECONDS);
 	}
 	
