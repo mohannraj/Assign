@@ -30,6 +30,7 @@ public class MainModule {
 		driver = new ChromeDriver();
 		driver.get("file:///c:/Users/MohanRaj/Desktop/html/search.html");
 		driver.manage().timeouts().implicitlyWait(10, TimeUnit.SECONDS);
+		System.out.println("Before Test");
 	}
 	
 	@Test
@@ -125,6 +126,7 @@ public class MainModule {
 	@AfterTest
 	public void postTest()
 	{
+		System.out.println("After Test");
 		driver.close();
 	}
 }
